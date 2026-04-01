@@ -1,11 +1,19 @@
 import Weather from './components/Weather';
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect  } from 'react';
 
 function App() {
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+  const savedWeather = localStorage.getItem("weather");
+
+  if (savedWeather) {
+    setWeatherData(JSON.parse(savedWeather));
+  }
+}, []);
 
   const API_KEY = "f9b5b8a043aa2d87b5789309e8f7203f";
 
@@ -27,6 +35,8 @@ function App() {
         setWeatherData(null);
       } else {
         setWeatherData(data);
+
+        localStorage.setItem("weather", JSON.stringify(data));
       }
     }
     catch (err) {
