@@ -19,7 +19,7 @@ function App() {
 
   const getWeather = async () => {
     if (!city) {
-      setError("Please Enter a city name");
+      setError("Please Enter A City Name");
       return;
     }
 
@@ -40,7 +40,7 @@ function App() {
       }
     }
     catch (err) {
-      setError("Something went wrong. Please try again later.");
+      setError("Something Went Wrong. Please Try Again Later.");
     }
   };
   return (
